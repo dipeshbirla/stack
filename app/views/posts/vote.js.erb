@@ -1,0 +1,15 @@
+ $("#post_count").html( '<%= @post.votes.like.count %>');
+ <% if params[:vote] == "firstlike" %>
+$("#firstlike").hide();
+ $("#firstdislike").show();
+<% else %>
+$("#firstdislike").hide();
+$("#firstlike").show();
+<% end %>
+
+ <% if params[:vote] == "like" %>
+   $("#like_post_<%= @post.id %>").html('<%=link_to "dislike",home_post_vote_path(current_user.id,@post.id, vote:"dislike"), remote: true, id:"dislike_post_#{@post.id}" %>');
+   // $("#like_post_<%= @post.id %>").hide();
+   <% else %>
+    $("#dislike_post_<%= @post.id %>").html('<%=link_to "like",home_post_vote_path(current_user.id,@post.id, vote:"like"), remote: true, id:"like_post_#{@post.id}" %>');
+  <% end %>

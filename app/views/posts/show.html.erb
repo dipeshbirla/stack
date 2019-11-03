@@ -1,0 +1,48 @@
+
+
+<h2>
+Question :<br>
+<span id="post_count"> <%= @post.votes.like.count %></span>
+  <%= @post.question %>
+</h2>
+<% if @post.user_id  != current_user.id %>
+   <%= render 'voted' %>
+ <% end %>
+<br>
+
+<h2>Code :</h2>
+ <div style="width: 80%; background: lightgrey">
+<pre>
+ <code>
+ <%= @post.code %>
+ </code>
+ </pre>
+</div>	
+<% @post.answers.each do |ans| %>
+ <h3>Answer :</h3>
+ <h2>
+<span id="answer_count_<%=ans.id %>"><%= ans.votes.like.count-ans.votes.dislike.count %> </span>
+	<%= ans.answer %></h2>
+    <%=render 'answers/vote', ans: ans %>
+  <br>
+ <div style="width: 80%; background: lightgrey">
+ 	<pre>
+ 		<code>
+ <%= ans.code %>
+        </code>
+    </pre>
+</div>
+ <% if @post.user_id  == current_user.id %>
+
+ <%end %>
+ <hr>
+<% end %>
+
+<% if @post.user_id  != current_user.id %>
+<%= form_with url:home_post_answers_path(current_user.id,@post.id), remote: true do |form| %>
+<%= form.text_area :answer, :placeholder =>"write answer here", size: "100x20" %><br>
+<%= form.text_area :code,:placeholder =>"write code here", size: "100x20" %><br>
+<%= form.submit "answer"%>
+<% end %> 
+
+<% end %>

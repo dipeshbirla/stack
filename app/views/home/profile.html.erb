@@ -1,0 +1,9 @@
+<%= link_to "edit",edit_user_registration_path %> 
+
+<h1>Address</h1>
+
+<% @user.address.each do |add| %>
+    <%= add %> <br>
+<% end %>
+  
+

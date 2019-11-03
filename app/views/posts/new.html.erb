@@ -1,0 +1,14 @@
+
+<%= form_with url:home_posts_path do |f| %>
+<p>
+<%= f.label :question %><br>
+<%=f.text_area :question, :placeholder =>"write a question", size: "100x20"%>
+</p>
+
+<p>
+<%= f.label :code %><br>
+<%=f.text_area :code, :placeholder =>"write a code", size: "100x20"%>
+</p>
+
+<%= f.submit "create post" %>
+<%end %>

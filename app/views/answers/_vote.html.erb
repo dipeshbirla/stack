@@ -1,0 +1,11 @@
+ <% if ans.votes[0].blank? %>
+  <%=link_to 'like',post_answer_vote_path(@post.id,ans.id, vote:"firstlike"),remote: true %>  
+  <%=link_to 'dislike',post_answer_vote_path(@post.id,ans.id, vote:"firstdislike"),remote: true%>
+
+   <% else %>
+      <% if ans.votes[0].voted == "like" %>
+         <%=link_to 'dislike',post_answer_vote_path(@post.id,ans.id, vote:"dislike"), remote: true %>
+      <% else %>
+       <%=link_to 'like',post_answer_vote_path(@post.id,ans.id, vote:"like"),remote: true %>  
+       <% end %>
+  <% end %> 

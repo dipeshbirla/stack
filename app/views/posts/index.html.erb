@@ -1,0 +1,8 @@
+<h1>My Post</h1>
+
+<% @post.each_with_index do |post,index| %>
+<div class="jumbotron"> 
+ <p class="lead"><%= index+1 %>. <%= link_to post.question,home_post_path(current_user.id,post.id) %>	</p>
+  <span class="badge badge-info"><%= time_ago_in_words(post.updated_at)  %> ago</span>
+</div>
+<% end %>

@@ -1,0 +1,10 @@
+<h1>All post</h1>
+<% @post.each_with_index do |p,index| %>
+
+   <div class="jumbotron">
+  <p class="lead"><%= index+1 %>. <%= link_to p.question, home_post_path(current_user.id,p.id) %></p>
+  <p> </p>
+  <span class="badge badge-info"> <%= time_ago_in_words(p.updated_at) %> ago</span><br>
+  - Posted By : <%= p.user.username.titlecase%>
+</div>
+<% end %>	
