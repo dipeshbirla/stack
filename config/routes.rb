@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "home#index"
   get 'answers/index'
   get 'answers/show'
   get 'answers/create'
@@ -10,7 +11,6 @@ Rails.application.routes.draw do
   get 'posts/index'
   get 'posts/show'
   get 'posts/edit'
-  root "home#index"
   get 'home/index'
    get 'home/profile'
   devise_for :users, :controllers =>{registrations:'registration'}
